@@ -1,0 +1,20 @@
+.chat-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #f3f3f3;
+  border-right: 1px solid #ddd;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.chat-main {
+  flex-grow: 1;
+  padding: 16px;
+  box-sizing: border-box;
+}
