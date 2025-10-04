@@ -1,14 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 export default function Login({ onLoginSuccess }) {
   const [nombre, setNombre] = useState('');
   const [contra, setContra] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
+
 
     try {
       const res = await axios.post('https://localhost:7005/api/chat/login', { nombre, contra },
@@ -16,10 +19,13 @@ export default function Login({ onLoginSuccess }) {
           withCredentials: true
         }
       );
+      console.log(nombre, contra);
       const userData = res.data;
 
       // Guardar en localStorage
       localStorage.setItem('user', JSON.stringify(userData));
+      navigate('/chat');
+
       // Notificar al padre o cambiar estado global
       // onLoginSuccess(userData);
     } catch (err) {

@@ -25,7 +25,6 @@ export default function ChatLayout() {
 
 
   const handleUserSelect = (user) => {
-    console.log("Usuario seleccionado:", user.id_user);
     if (user.IdConversacion === null) {
       user.IdConversacion = 0;
     }
@@ -61,10 +60,9 @@ export default function ChatLayout() {
           }
         }
       })
-      console.log(aux);
       setMessagess(aux);
     } catch (error) {
-      setMessagess(null);
+      setMessagess("");
 
       console.error("Error al obtener los mensajes:", error);
     }
@@ -134,7 +132,7 @@ export default function ChatLayout() {
     connection
       .start()
       .then(() => {
-        console.log("Conectado a SignalR");
+
 
         // Guardamos la conexión en estado para otros efectos si es necesario
         setHubConnection(connection);

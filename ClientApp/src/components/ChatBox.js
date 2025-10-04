@@ -8,7 +8,7 @@ export default function ChatBox({ currentUser, messages, setMessagess }) {
 
         try {
             if (message.trim() === '') return;
-            console.log("Mensaje enviado:", message);
+
             // Aquí enviarías el mensaje al servidor con SignalR o API
 
             const newMessage = {
@@ -17,18 +17,18 @@ export default function ChatBox({ currentUser, messages, setMessagess }) {
                 id_remitente: currentUser.id_remitente,
             }
 
-            console.log({
-                contenido: message,
-                sender: "Yo",
-            })
+            // console.log({
+            //     contenido: message,
+            //     sender: "Yo",
+            // })
 
-            setMessagess(prevMessages => [
-                ...prevMessages,
-                {
-                    sender: "Yo",
-                    contenido: message,
-                }
-            ]);
+            // setMessagess(prevMessages => [
+            //     ...prevMessages,
+            //     {
+            //         sender: "Yo",
+            //         contenido: message,
+            //     }
+            // ]);
 
 
             const response = await axios.post('https://localhost:7005/api/chat/newMensaje', newMessage,
@@ -61,7 +61,7 @@ export default function ChatBox({ currentUser, messages, setMessagess }) {
             }}>
                 {/* Mensajes irían aquí */}
                 {messages && messages.map((msg, index) => {
-                    console.log("Mensaje a renderizar:", msg);
+
                     return (
                         <div key={index} style={{ marginBottom: '8px' }}>
                             <strong>{msg.sender}</strong>: {msg.contenido}
